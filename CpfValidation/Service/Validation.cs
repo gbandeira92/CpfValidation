@@ -12,10 +12,7 @@
 
             cpf = cpf.Trim().Replace(".", "").Replace("-", "");
 
-            if (cpf.Length != 11)
-                return false;
-
-            if (!cpf.All(c => Char.IsNumber(c)) || cpf.Equals("00000000000"))
+            if (cpf.Length != 11 || !cpf.All(c => Char.IsNumber(c)) || cpf.All(x => x == cpf.FirstOrDefault()))
                 return false;
 
             var tempCpf = cpf[..9];
